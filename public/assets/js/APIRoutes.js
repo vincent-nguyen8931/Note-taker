@@ -36,5 +36,6 @@ app.delete ("/api/notes/:id", function (req, res) {
       notes.push(res.json(JSON.parse(res[j])));
     }
   }
-  res.send("note removed")
+  res.send("note removed");
+  return res.json(notes);
 })
