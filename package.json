@@ -4,11 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node server.js",
-=======
-    "start": "node index.html",
->>>>>>> e7c6fa1ac6d4ebd5fae43cdfaf33340aa787b35f
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -1,10 +1,11 @@
 var express = require('express')
-var app = express()
+var path = require("path");
+var app = express();
 
 app.get("/notes", function (req, res) {
-  res.send("notes.html")
+  res.send("notes.html");
 })
 
 app.get("*", function (req, res) {
-  res.send("index.html")
+  res.send("index.html");
 })
