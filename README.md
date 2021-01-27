@@ -5,13 +5,14 @@
 Description
 ------------
 
-Note taker will allow the user to take notes and have them appear on the left hand side as a list. The notes will reset upon refresh of the page.
+Note taker will allow the user to take notes and have them appear on the left hand side as a list. The notes will reset upon refresh of the page. The frontend portion of this application was given to me by the Trilogy coding bootcamp. The work performed is on the backend using Express and Node.js.
 
  Table of contents
 ---------------
 [Tools used](#Tools-used)<br />
-[Demo link](#Demo-link)<br />
+[Deployed here](#Deployed-here)<br />
 [Features](#Features)<br />
+[Lessons learned](#Lessons-learned)<br />
 [Credits](#Credits)<br />
 [License](#License)
 
@@ -22,21 +23,26 @@ Tools used
 * GitBash - Assist with version control via commits, push, and pull to and from GitHub.
 * GitHub - Site where the repository lies for deployment and edits.
 * HTML - Displays the collected information from the app.js in a nice tile layout
-* Inquirer - Allows prompting user for various information to fill out precreated team member sections.
 * Node.js - Build the template and all functions in application. 
 * VS Code - Application used to write and edit code for the application.
 
-Demo link
+Deployed here
 -------------
 
-Below is the link to the video demonstration the working application. <br />
-[Link to video](https://drive.google.com/file/d/1jbg_wRvVA1UQTalWu_Q6XnNNQ9cYC279/view?usp=sharing)
+Below is the link to the deployed site. <br />
+[Link to deployed site](https://note-task-list.herokuapp.com/)
 
 
 Features
 ------------------
 
-The user has the capablity to input description, installation instructions, usage information, contribution guidelines, and test instructions into the various prompts. They will be able to choose a license from the list of licenses as well as input their github username and e-mail address. This is to allow for showcasing their repositories and provide a point of contact.
+The user has the capablity to take notes and have them saved to the list on the left side of the page upon clicking on the save icon in the top right. They are also capable of deleting notes by clicking on the red trash bin next to the specific note.
+
+Lessons learned
+---------------
+There were significant difficulties in attempting to have the paths work properly when HTML routes and API routes were split into different files and then placed into a folder that is different than the server.js. The fix here was to put the entire routes into the server.js file and work from there alone.
+
+I did not manage to get the application to delete specific notes and it ends up deleting every note instead. The fix for this will elude me for some time while I attempt to understand where the object file is being read and when to call specific keys inside of it.
 
 Credits
 ---------------
