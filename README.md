@@ -42,7 +42,12 @@ Lessons learned
 ---------------
 There were significant difficulties in attempting to have the paths work properly when HTML routes and API routes were split into different files and then placed into a folder that is different than the server.js. The fix here was to put the entire routes into the server.js file and work from there alone.
 
-I did not manage to get the application to delete specific notes and it ends up deleting every note instead. The fix for this will elude me for some time while I attempt to understand where the object file is being read and when to call specific keys inside of it.
+I did not manage to get the application to delete specific notes and it ends up deleting every note instead. The fix was achieved by attaining assistance from a TA during my coding bootcamp and it involved comparing two of the proper variables together. Below is a code snippet of what should have been tracked instead of what I had prior.
+```
+var noteId = req.params.id;
+    dataFile = JSON.parse(data);
+if (parseInt(noteId) !== parseInt(dataFile[j].id))
+```
 
 Credits
 ---------------
