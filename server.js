@@ -41,20 +41,16 @@ app.post("/api/notes", function (req, res) {
   var noteTitle = req.body.title;
   var noteText = req.body.text;
   var noteDetails = {
-    id: noteId,
+    // id: noteId,
     title: noteTitle,
     text: noteText
   }
-  var temp = [];
-  temp.push(noteDetails);
-  
-  fs.writeFile("./db/db.json", temp, function (err) {
+
+  fs.appendFile("./db/db.json", `{"title": "${req.body.title}", "text": "${req.body.text}"},`, function (err) {
     if (err) throw err;
-    else {
       // console.log("write file successful");
       i++;
       res.send("Success");
-    }
   })
 });
 
