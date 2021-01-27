@@ -1,11 +1,11 @@
 # Note-taker
 
-![image]()
+![image](Note-taker-image.png)
 
 Description
 ------------
 
-Team profile generator creates a template that will fill out your team's profile with a manager, multiple engineers, and interns.
+Note taker will allow the user to take notes and have them appear on the left hand side as a list. The notes will reset upon refresh of the page.
 
  Table of contents
 ---------------
@@ -18,6 +18,7 @@ Team profile generator creates a template that will fill out your team's profile
 Tools used
 -------------------
 
+* Express - Link front end and back end together via routes.
 * GitBash - Assist with version control via commits, push, and pull to and from GitHub.
 * GitHub - Site where the repository lies for deployment and edits.
 * HTML - Displays the collected information from the app.js in a nice tile layout

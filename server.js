@@ -1,9 +1,11 @@
-var express = require('express')
+var express = require('express');
 var path = require("path");
 var fs = require("fs");
 
+// var notes = JSON.stringify((path.join(__dirname, "db/db.json")));
+// console.log(notes);
 var dataFile = [];
-var notes = [];
+var recreateNotes = [];
 i = 0;
 
 // Create express server and apply to app variable
@@ -28,7 +30,7 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function (req, res) {
   fs.readFile("./db/db.json", function (err, data) {
     if (err) throw err;
-    res.json(JSON.parse(data));
+    // res.json(JSON.stringify(data));
   })
 })
 
@@ -41,21 +43,25 @@ app.post("/api/notes", function (req, res) {
   var noteTitle = req.body.title;
   var noteText = req.body.text;
   var noteDetails = {
-    // id: noteId,
+    id: noteId,
     title: noteTitle,
     text: noteText
   }
+  var noteArray = []
+  noteArray.push
 
-  fs.appendFile("./db/db.json", `{"title": "${req.body.title}", "text": "${req.body.text}"},`, function (err) {
+  // notes = JSON.stringify(noteId + " " + noteTitle + " " + noteText);
+
+
+  fs.appendFile("./db/db.json", noteArray.push(noteDetails), function (err) {
     if (err) throw err;
-      // console.log("write file successful");
       i++;
       res.send("Success");
   })
 });
 
 app.delete("/api/notes/:id", function (req, res) {
-  fs.readFile("./db/db.json", function (err, data) {
+  fs.readFile("./db/db.json", JSON.parse(notes), function (err, data) {
     dataFile = data;
     var noteId = req.params.id;
     var temp = [];
@@ -64,8 +70,8 @@ app.delete("/api/notes/:id", function (req, res) {
         temp.push(dataFile[i])
       }
     }
-    notes = temp;
-    fs.writeFile("./db/db.json", JSON.stringify(notes), function (err) {
+    recreateNotes = temp;
+    fs.writeFile("./db/db.json", JSON.parse(recreateNotes), function (err) {
       if (err) throw err;
       res.send("note removed");
     })
