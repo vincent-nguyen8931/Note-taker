@@ -59,17 +59,17 @@ app.post("/api/notes", function (req, res) {
 
 // Deletes the note and rewrites the notes with the id updated
 app.delete("/api/notes/:id", function (req, res) {
-  fs.readFile("./db/db.json", JSON.parse(notes), function (err, data) {
-    dataFile = data;
-    var noteId = req.params.id;
+  fs.readFile("./db/db.json", res, function (err, data) {
+    dataFile = JSON.parse(data);
+    var noteId = dataFile
     var temp = [];
     for (var j = 0; j < dataFile.length; j++) {
-      if (j !== parseInt(noteId)) {
-        temp.push(dataFile[i])
+      if (j !== parseInt(noteId[j].id)) {
+        temp.push(dataFile[j])
       }
     }
     recreateNotes = temp;
-    fs.writeFile("./db/db.json", JSON.parse(recreateNotes), function (err) {
+    fs.writeFile("./db/db.json", JSON.stringify(recreateNotes), function (err) {
       if (err) throw err;
       res.send("note removed");
     })
