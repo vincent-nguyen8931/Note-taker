@@ -35,8 +35,7 @@ app.get("*", function (req, res) {
 })
 
 app.post("/api/notes", function (req, res) {
-  fs.readFile("./db/db.json", JSON.parse(req), function (err, data) {
-    console.log(req)
+  fs.readFile("./db/db.json", res, function (err, data) {
     if (err) throw err;
     var dbNotes = JSON.parse(data);
     var noteArray = [];
@@ -50,32 +49,32 @@ app.post("/api/notes", function (req, res) {
       }
       noteArray.push(newNote);
     }
-
-    fs.writeFile("./db/db.json", JSON.stringify(noteArray), function (err) {
+    var noteData = JSON.stringify(noteArray)
+    fs.writeFile("./db/db.json", noteData, function (err) {
       if (err) throw err;
       res.json(req.body);
     })
   })
 });
 
-
-// app.delete("/api/notes/:id", function (req, res) {
-//   fs.readFile("./db/db.json", JSON.parse(notes), function (err, data) {
-//     dataFile = data;
-//     var noteId = req.params.id;
-//     var temp = [];
-//     for (var j = 0; j < dataFile.length; j++) {
-//       if (j !== parseInt(noteId)) {
-//         temp.push(dataFile[i])
-//       }
-//     }
-//     recreateNotes = temp;
-//     fs.writeFile("./db/db.json", JSON.parse(recreateNotes), function (err) {
-//       if (err) throw err;
-//       res.send("note removed");
-//     })
-//   })
-// })
+// Deletes the note and rewrites the notes with the id updated
+app.delete("/api/notes/:id", function (req, res) {
+  fs.readFile("./db/db.json", JSON.parse(notes), function (err, data) {
+    dataFile = data;
+    var noteId = req.params.id;
+    var temp = [];
+    for (var j = 0; j < dataFile.length; j++) {
+      if (j !== parseInt(noteId)) {
+        temp.push(dataFile[i])
+      }
+    }
+    recreateNotes = temp;
+    fs.writeFile("./db/db.json", JSON.parse(recreateNotes), function (err) {
+      if (err) throw err;
+      res.send("note removed");
+    })
+  })
+})
 
 // Listens for the port and starts the server
 app.listen(PORT, function () {
