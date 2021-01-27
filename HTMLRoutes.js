@@ -1,11 +1,11 @@
-var express = require('express')
+var router = require('express').Router();
 var path = require("path");
 var app = express();
 
-app.get("/notes", function (req, res) {
-  res.send("notes.html");
+router.get("/notes", function (req, res) {
+  res.sendFile(path.join(__dirname, "./notes.html"));
 })
 
-app.get("*", function (req, res) {
-  res.send("index.html");
+router.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./index.html"));
 })

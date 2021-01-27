@@ -1,4 +1,4 @@
-var express = require('express');
+var router = require('express').Router();
 var app = express();
 var fs = require("fs");
 
@@ -6,14 +6,14 @@ var dataFile = [];
 var notes = [];
 i = 0;
 
-app.get("/notes", function (req, res) {
+router.get("/notes", function (req, res) {
   fs.readFile("../../db/db.json", function (err, data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   })
 })
 
-app.post("/notes", function (req, res) {
+router.post("/notes", function (req, res) {
   var noteId = i;
   var noteTitle = req.body.title;
   var noteText = req.body.text;
@@ -28,7 +28,7 @@ app.post("/notes", function (req, res) {
   })
 });
 
-app.delete ("/notes/:id", function (req, res) {
+router.delete ("/notes/:id", function (req, res) {
   fs.readFile("../../db/db.json", function (err, data) {
     dataFile = data;
   var noteId = req.params.id;
