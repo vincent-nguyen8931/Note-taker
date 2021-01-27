@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var app = express();
+// var app = express();
 var fs = require("fs");
 
 var dataFile = [];
