@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "assets")));
 
+// Pulls in the notes html to allow for data to be insert
 app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "assets/notes.html"));
 })
@@ -34,6 +35,7 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "assets/index.html"));
 })
 
+// Will allow new notes to be added to the list
 app.post("/api/notes", function (req, res) {
   fs.readFile("./db/db.json", res, function (err, data) {
     if (err) throw err;
