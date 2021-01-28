@@ -47,7 +47,7 @@ app.post("/api/notes", function (req, res) {
       var newNote = {
         title: dbNotes[j].title,
         text: dbNotes[j].text,
-        id: j
+        id: j+1
       }
       noteArray.push(newNote);
     }
